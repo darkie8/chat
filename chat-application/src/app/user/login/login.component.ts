@@ -57,10 +57,9 @@ export class LoginComponent implements OnInit {
           
             this.appService.setUserInfoInLocalStorage(apiResponse.data.userDetails)
            
-            this.router.navigate(['/chat']);
-
+         
             
-            
+            this.toastr.success('Login success')
     
 
           } else {

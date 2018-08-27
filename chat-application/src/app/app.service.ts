@@ -14,7 +14,7 @@ export class AppService {
   private baseUrl = 'https://chatapi.edwisor.com'
 
   constructor(public http :HttpClient) { }
-  public getUserInfoInLocalStorage =(data)=>
+  public getUserInfoFromLocalStorage =()=>
   {
     return JSON.parse(localStorage.getItem('userInfo'))
   }
@@ -34,10 +34,10 @@ export class AppService {
     .set('apiKey',data.apiKey)
     return this.http.post(`${this.baseUrl}/api/v1/users/signup`,params)
   }
-  public signinFunction(data):Observable<any>{
-    const params = new HttpParams()
-    .set('email',data.email)
-    .set('passsword',data.passsword)
-    return this.http.post(`${this.baseUrl}/api/v1/users/login`,params)
-  }
+ public signinFunction(data):Observable<any>{
+   const params = new HttpParams()
+   .set('email',data.email)
+   .set('password',data.password)
+   return this.http.post(`${this.baseUrl}/api/v1/users/login`,params)
+ }
 }
