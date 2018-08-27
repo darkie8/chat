@@ -53,7 +53,7 @@ export class ChatBoxComponent implements OnInit {
 
 
   }
-
+  
   public checkStatus: any = () => {
 
     if (Cookie.get('authtoken') === undefined || Cookie.get('authtoken') === '' || Cookie.get('authtoken') === null) {
@@ -71,7 +71,6 @@ export class ChatBoxComponent implements OnInit {
   } // end checkStatus
 
 
-
   public verifyUserConfirmation: any = () => {
 
     this.SocketService.verifyUser()
@@ -80,31 +79,31 @@ export class ChatBoxComponent implements OnInit {
         this.disconnectedSocket = false;
 
         this.SocketService.setUser(this.authToken);
-        this.getOnlineUserList()
+        this.getOnlineUserList();
 
       });
-    }
-  
-  public getOnlineUserList :any =()=>{
+  }
+
+  public getOnlineUserList: any = () => {
 
     this.SocketService.onlineUserList()
       .subscribe((userList) => {
 
         this.userList = [];
 
-        for (let x in userList) {
+        // tslint:disable-next-line:forin
+        for (const x in userList) {
 
-          let temp = { 'userId': x, 'name': userList[x], 'unread': 0, 'chatting': false };
+          const temp = { 'userId': x, 'name': userList[x], 'unread': 0, 'chatting': false };
 
-          this.userList.push(temp);          
+          this.userList.push(temp);
 
         }
-        
+
         console.log(this.userList);
 
       }); // end online-user-list
   }
-
 
     
 
