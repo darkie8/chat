@@ -21,7 +21,7 @@ export class AppService {
 
   public setUserInfoInLocalStorage =(data)=>
   {
-    localStorage.setItem('setInfo',JSON.stringify(data))
+    localStorage.setItem('userInfo',JSON.stringify(data))
   }
 
   public signupFunction(data):Observable<any>{
