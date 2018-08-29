@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
 import{HttpClient,HttpHeaders} from'@angular/common/http';
 import{HttpErrorResponse,HttpParams} from '@angular/common/http';
-import { observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -63,6 +63,21 @@ this.socket.on(userId,(data)=>{
         public sendChatMessage = (chatMessageObject)=>
         {
           this.socket.emit('chat-msg',chatMessageObject)
+        }
+        public markChatAsSeen =(userDetails)=>
+        {
+          this.socket.emit('mark-chat-as-seen',userDetails);
+        }
+        public getChat(senderId, receiverId, skip): Observable<any> {
+
+          return this.http.get(`${this.baseUrl}/api/v1/chat/get/for/user?senderId=${senderId}&receiverId=${receiverId}&skip=${skip}&authToken=${Cookie.get('authtoken')}`)
+            .do(data => console.log('Data Received'))
+            .catch(this.handleError);
+      
+        }
+        public exitSocket=()=>
+        {
+          this.socket.disconnect();
         }
           private handleError(err: HttpErrorResponse) {
 

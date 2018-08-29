@@ -21,7 +21,7 @@ export class AppService {
 
   public setUserInfoInLocalStorage =(data)=>
   {
-    localStorage.setItem('setInfo',JSON.stringify(data))
+    localStorage.setItem('userInfo',JSON.stringify(data))
   }
 
   public signupFunction(data):Observable<any>{
@@ -40,4 +40,36 @@ export class AppService {
    .set('password',data.password)
    return this.http.post(`${this.baseUrl}/api/v1/users/login`,params)
  }
+   
+ public logout(): Observable<any> {
+
+  const params = new HttpParams()
+    .set('authToken', Cookie.get('authtoken'))
+
+  return this.http.post(`${this.baseUrl}/api/v1/users/logout`, params);
+
+} // end logout function
+
+
+
+private handleError(err: HttpErrorResponse) {
+
+  let errorMessage = '';
+
+  if (err.error instanceof Error) {
+
+    errorMessage = `An error occurred: ${err.error.message}`;
+
+  } else {
+
+    errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+
+  } // end condition *if
+
+  console.error(errorMessage);
+
+  return Observable.throw(errorMessage);
+
+}  // END handleError
+
 }

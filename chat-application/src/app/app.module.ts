@@ -9,11 +9,13 @@ import { LoginComponent } from './user/login/login.component';
 import { AppService } from './app.service';
 import{HttpClientModule} from '@angular/common/http';
 import{ToastModule} from 'ng6-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { UserDetailsComponent } from './user-details/user-details.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserDetailsComponent
     
   ],
   imports: [
