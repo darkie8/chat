@@ -72,7 +72,7 @@
 
     <div class="col-12 col-sm-8 col-md-8 chat">
       <div class="chat-header clearfix mobileMenu" *ngIf="receiverName">
-        <first-char [userName]="receiverName" [userBg]="'blue'" [userColor]="'white'" (notify)="showUserName($event)"></first-char>
+        <first-char [name]="receiverName" [userBg]="'blue'" [userColor]="'white'" (notify)="showUserName($event)"></first-char>
 
         <div class="chat-about">
           <div class="chat-with">Chat with {{receiverName}}</div>
