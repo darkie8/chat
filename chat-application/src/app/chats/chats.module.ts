@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
 import{RouterModule,Routes} from '@angular/router';
@@ -19,6 +19,7 @@ import {UserDetailsComponent} from '../shared/user-details/user-details.componen
       {path:'chat', component: ChatBoxComponent}]),
       SharedModule
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   declarations: [ChatBoxComponent,ChatpipePipe]
   
 })
